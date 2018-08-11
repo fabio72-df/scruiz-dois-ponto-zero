@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Scruiz</string>
+
+    <!-- SPLASH SCREEN -->
+    <string name="iniciando_aguarde">Iniciando Scruiz! Aguarde&#8230;</string>
+    <string name="pronto_continuar">Pronto! Continuar&#8230;</string>
+
+</resources>
