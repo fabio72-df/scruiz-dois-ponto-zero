@@ -5,6 +5,9 @@
     <color name="colorAccent">#ffffbb</color>
     <color name="background_md">#eeeee1</color>
 
-
+    <!-- FireBase - QuickStart -->
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_500">#9E9E9E</color>
 
 </resources>

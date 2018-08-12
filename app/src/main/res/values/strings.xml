@@ -1,8 +1,25 @@
 <resources>
+
     <string name="app_name">Scruiz</string>
 
     <!-- SPLASH SCREEN -->
     <string name="iniciando_aguarde">Iniciando Scruiz! Aguarde&#8230;</string>
-    <string name="pronto_continuar">Pronto! Continuar&#8230;</string>
+    <string name="inicar">Inicar&#8230;</string>
+
+    <!-- Firebase-Authentication [QuikStart] -->
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+
+    <string name="google_title_text">Google Sign In</string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="google_sign_out">Sign out</string>
+    <string name="google_disconnect">DISCONNECT</string>
+
+    <string name="signed_out">Signed Out</string>
+    <string name="desc_google_sign_in">Use a conta do Google para Sign In.</string>
+    <string name="desc_email_sign_in">Conecte-se usando seu e-mail.</string>
+    <string name="desc_anonimo_sign_in">Acessar anônimo. Não pontua para o Ranking.</string>
+    <!-- Firebase-Authentication [QuikStart] *** fim ***-->
+
 
 </resources>
