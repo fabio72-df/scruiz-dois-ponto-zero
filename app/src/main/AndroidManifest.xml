@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.fabiocarvalho.scruiz" >
+    package="com.fabiocarvalho.scruiz">
 
     <application
+        android:appComponentFactory="whateverString"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:replace="android:appComponentFactory">
+    <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
 
         <!-- PRINCIPAL -->
         <activity
@@ -31,10 +32,11 @@
                 android:value=".ScruizActivity" />
         </activity>
         <!-- GOOGLE -->
-        <activity android:name=".authenticator.GoogleActivity"
-            android:parentActivityName=".ScruizActivity">
-        </activity>
-
+        <activity
+            android:name=".authenticator.GoogleActivity"
+            android:parentActivityName=".ScruizActivity" />
+        <activity android:name=".authenticator.EmailActivity" />
+        <activity android:name=".authenticator.LoginAnonimoActivity"></activity>
     </application>
 
 </manifest>

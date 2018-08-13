@@ -7,6 +7,8 @@
     <string name="inicar">Inicar&#8230;</string>
 
     <!-- Firebase-Authentication [QuikStart] -->
+    <string name="tela_login_titulo">Login</string>
+
     <string name="desc_firebase_lockup">Firebase logo and name</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
 

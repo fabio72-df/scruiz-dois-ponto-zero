@@ -5,14 +5,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".authenticator.ChooserActivity">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_Chooser"
+        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ToolBar" />
+    <!-- TODO ver se precisa: -->
+    <!-- android:minHeight="?attr/actionBarSize" -->
+
+    <TextView
+        android:id="@+id/textView_TelaLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_horizontal"
+        android:text="@string/tela_login_titulo"
+        android:textSize="42sp"
+        android:theme="@style/TituloGeral" />
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="368dp"
-        android:layout_height="551dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:padding="12dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />

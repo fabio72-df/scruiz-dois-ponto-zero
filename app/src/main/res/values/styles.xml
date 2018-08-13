@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme"
         parent="Theme.AppCompat.Light.NoActionBar">
@@ -11,6 +10,14 @@
         <item name="android:colorBackground">@color/background_md</item>
     </style>
 
+    <style name="TituloGeral" parent="AppTheme">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="ToolBar" parent="AppTheme">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 
     <!-- FIREBASE [QuickStart] -->
     <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">

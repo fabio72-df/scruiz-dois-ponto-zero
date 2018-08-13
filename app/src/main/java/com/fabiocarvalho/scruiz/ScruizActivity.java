@@ -55,23 +55,23 @@ public class ScruizActivity extends AppCompatActivity {
                 mUser = mAuth.getCurrentUser();
                 if (mUser != null) {
                     // User is signed in
-                    Log.d(TAG_USUARIO, "onAuthStateChanged:signed_in:" + mUser.getUid());
+                    Log.d(TAG_USUARIO, "onAuthStateChanged:signed_in:" + mUser.getDisplayName());
                 } else {
                     // User is signed out
                     Log.d(TAG_USUARIO, "onAuthStateChanged:signed_out");
                 }
             }
         };
+
+        mUser = mAuth.getCurrentUser();
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        mUser = mAuth.getCurrentUser();
-        if (mUser != null) {
-            Toast.makeText(ScruizActivity.this, mUser.getUid(), Toast.LENGTH_SHORT).show();
-        }
+        mAuth.addAuthStateListener(mAuthListener);
 
         telaCheia(true);
         iniciarProgressBar();
@@ -81,6 +81,16 @@ public class ScruizActivity extends AppCompatActivity {
         mLogo.setImageResource(R.drawable.te_transp_amarelo);
         mLogo.setAlpha(1.0F);
         mLogo.startAnimation(animation);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
 
     }
 
@@ -119,8 +129,8 @@ public class ScruizActivity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.progressBar);
         mProgressBar.setIndeterminate(false);
         mProgressBar.setProgress(i);
-        // Contagem = 8 segundos
-        new CountDownTimer(8000, 1000) {
+        // Contagem = 5 segundos
+        new CountDownTimer(5000, 1000) {
             public void onTick(long millisUntilFinished) {
                 i = i + 10;
                 mProgressBar.setProgress(i);
