@@ -125,7 +125,6 @@ ChooserActivity extends AppCompatActivity implements AdapterView.OnItemClickList
                     view = inflater.inflate(android.R.layout.simple_list_item_2, null);
                 }
             }
-            MENU_TITULOS[position] = "blábláblá";
             TextView a = ((TextView) view.findViewById(android.R.id.text1));
             a.setText(MENU_TITULOS[position]);
 

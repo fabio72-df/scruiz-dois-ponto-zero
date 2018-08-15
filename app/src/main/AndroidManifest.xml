@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <!-- CHOOSER - ROTEADOR PAR LOGIN Google / E-mail / Anonimo -->
+        <!-- CHOOSER - ROTEADOR PARA LOGIN Google / E-mail / Anonimo -->
         <activity android:name=".authenticator.ChooserActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -35,8 +35,11 @@
         <activity
             android:name=".authenticator.GoogleActivity"
             android:parentActivityName=".ScruizActivity" />
+        <!-- E-MAIL -->
         <activity android:name=".authenticator.EmailActivity" />
-        <activity android:name=".authenticator.LoginAnonimoActivity"></activity>
+        <!-- ANONIMO -->
+        <activity android:name=".authenticator.LoginAnonimoActivity"/>
+
     </application>
 
 </manifest>

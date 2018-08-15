@@ -3,8 +3,8 @@
     <string name="app_name">Scruiz</string>
 
     <!-- SPLASH SCREEN -->
-    <string name="iniciando_aguarde">Iniciando Scruiz! Aguarde&#8230;</string>
-    <string name="inicar">Inicar&#8230;</string>
+    <string name="carregando">Carregando informações. Aguarde&#8230;</string>
+    <string name="pronto">Pronto!</string>
 
     <!-- Firebase-Authentication [QuikStart] -->
     <string name="tela_login_titulo">Login</string>
@@ -18,9 +18,10 @@
     <string name="google_disconnect">DISCONNECT</string>
 
     <string name="signed_out">Signed Out</string>
-    <string name="desc_google_sign_in">Use a conta do Google para Sign In.</string>
+    <string name="desc_google_sign_in">Faça login com sua conta do Google.</string>
     <string name="desc_email_sign_in">Conecte-se usando seu e-mail.</string>
-    <string name="desc_anonimo_sign_in">Acessar anônimo. Não pontua para o Ranking.</string>
+    <string name="desc_anonimo_sign_in">Nnão participa do Ranking.</string>
+
     <!-- Firebase-Authentication [QuikStart] *** fim ***-->
 
 
