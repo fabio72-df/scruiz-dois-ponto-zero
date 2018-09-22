@@ -65,7 +65,6 @@ ChooserActivity extends AppCompatActivity implements AdapterView.OnItemClickList
         }
         // [BARRA SUPERIOR] *** fim ***
 
-
         // Set up ListView and Adapter
         ListView listView = findViewById(R.id.list_view);
         MyArrayAdapter adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES);
@@ -74,30 +73,6 @@ ChooserActivity extends AppCompatActivity implements AdapterView.OnItemClickList
         listView.setOnItemClickListener(this);
         // ADAPTER
 
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_ppl, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.menuPpl_1:
-                Toast.makeText(ChooserActivity.this, "Login | Logout", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menuPpl_2:
-                Toast.makeText(ChooserActivity.this, "Sobre", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override

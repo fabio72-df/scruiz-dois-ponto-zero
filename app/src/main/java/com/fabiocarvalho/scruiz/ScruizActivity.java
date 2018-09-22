@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fabiocarvalho.scruiz.authenticator.ChooserActivity;
+import com.fabiocarvalho.scruiz.quiz.InicialTesteActivity;
 import com.fabiocarvalho.scruiz.utils.MinhaProgressBar;
 import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,7 +72,6 @@ public class ScruizActivity extends AppCompatActivity {
                 }
             }
         };
-        mUser = mAuth.getCurrentUser();
         // *** fim *** Usuário [logado/offline]
 
         // ProgressBar
@@ -91,14 +91,19 @@ public class ScruizActivity extends AppCompatActivity {
         super.onStart();
         // Rastrear sempre que o usuário fizer login ou logout:
         mAuth.addAuthStateListener(mAuthListener);
+        if (mAuth != null) {
+            mUser = mAuth.getCurrentUser();
+        }
 
         telaCheia(true);
 
+        // Animation
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_top_to_center);
         ImageView mLogo = findViewById(R.id.img_LogoSplash);
         mLogo.setImageResource(R.drawable.te_transp_amarelo);
         mLogo.setAlpha(1.0F);
         mLogo.startAnimation(animation);
+        // *** fim *** Animation
 
         // ProgressBar
         // (::para receber retorno enviar Interface (ProgressBarInterface)
@@ -107,9 +112,25 @@ public class ScruizActivity extends AppCompatActivity {
         ProgressBarInterface pbi = new ProgressBarInterface() {
             @Override
             public void retornoProgressBar(boolean isSucesso, String msg) {
-                String string = "1ª chamada::: " + isSucesso + " -- " + msg;
-                Toast.makeText(ScruizActivity.this, string, Toast.LENGTH_SHORT).show();
+                boolean logado = false;
+                String userName = "";
+                Intent intent;
+                if (mUser != null){
+                // USUÁRIO LOGADO
+                    logado = true;
+                    userName = mUser.getDisplayName();
+                    intent = new Intent(ScruizActivity.this, InicialTesteActivity.class);
+
+                }else{
+                // USUÁRIO NÃO LOGADO
+                    userName = "[off-line]";
+                    intent = new Intent(ScruizActivity.this,ChooserActivity.class);
+                }
+                textViewPB.setText(userName);
                 telaCheia(false);
+                intent.putExtra("#usuario", userName);
+                intent.putExtra("#logado", logado);
+                startActivity(intent);
             }
         };
         mpb = new MinhaProgressBar(this, mProgressBar, textViewPB, pbi);
@@ -164,6 +185,7 @@ public class ScruizActivity extends AppCompatActivity {
             }
         }
     }
+
 /*
 ====================================================================================================
 >> *** FIM  - ScruizActivity.java ***

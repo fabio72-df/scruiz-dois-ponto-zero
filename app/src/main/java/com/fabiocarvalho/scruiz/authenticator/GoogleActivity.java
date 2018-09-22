@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -41,6 +42,16 @@ public class GoogleActivity extends AppCompatActivity implements
 
         // Views
         mStatusTextView = findViewById(R.id.status);
+        // [BARRA SUPERIOR]
+        Toolbar myToolbar = findViewById(R.id.toolbar_Google);
+        setSupportActionBar(myToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        // [BARRA SUPERIOR] *** fim ***
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -182,7 +193,8 @@ public class GoogleActivity extends AppCompatActivity implements
         } else if (i == R.id.sign_out_button) {
             signOut();
         } else if (i == R.id.disconnect_button) {
-            revokeAccess();
+            //revokeAccess();
+            Toast.makeText(GoogleActivity.this,"DISCONNECT",Toast.LENGTH_SHORT).show();
         }
     }
 }

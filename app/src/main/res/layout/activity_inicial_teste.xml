@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quiz.InicialTesteActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_Inicial"
+        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ToolBar" />
+
+    <TextView
+        android:id="@+id/textView_TelaInicial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:text="Avalie seu conhecimento sobre SCRUM"
+        android:textSize="36sp"
+        android:theme="@style/TituloGeral"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_Inicial" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:id="@+id/table1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv11"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:lines="2"
+                android:text="Responder \nquestões"
+                android:textStyle="bold|italic" />
+
+            <ImageView
+                android:id="@+id/img12"
+                android:src="@drawable/twotone_play_circle_filled_white_black_18"
+                android:contentDescription="@string/img_responder_desc"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:gravity="center" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img21"
+                android:src="@drawable/twotone_build_black_18"
+                android:contentDescription="@string/img_configurar_desc"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv22"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Configurar"
+                android:textStyle="bold|italic" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv31"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Ranking"
+                android:textStyle="bold|italic" />
+
+            <ImageView
+                android:id="@+id/img32"
+                android:src="@drawable/twotone_stars_black_18"
+                android:contentDescription="@string/img_ranking_desc"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:gravity="center" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

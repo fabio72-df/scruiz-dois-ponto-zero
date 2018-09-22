@@ -2,41 +2,45 @@ package com.fabiocarvalho.scruiz.utils;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.fabiocarvalho.scruiz.R;
-import com.fabiocarvalho.scruiz.ScruizActivity;
 import com.fabiocarvalho.scruiz.interfaces.ProgressBarInterface;
+
+import java.lang.ref.WeakReference;
 
 public class MinhaProgressBar extends AsyncTask<Object, Object, String> {
 
+    private final int PROGRESSO = 20;
     private ProgressBarInterface progressBarInterface;
-
-    private ProgressBar progressBar;
-    private TextView texto;
+    private WeakReference<ProgressBar> progressBar;
+    private WeakReference<TextView> texto;
     private static int total = 0;
-    private static int PROGRESSO = 20;
-
 
     public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto, ProgressBarInterface progressBarInterface) {
+        this.progressBar = new WeakReference<>(progressBar);
+        this.texto = new WeakReference<>(texto);
+        this.progressBarInterface = progressBarInterface;
+    }
+    /* public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto, ProgressBarInterface progressBarInterface) {
         this.progressBar = progressBar;
         this.texto = texto;
         this.progressBarInterface = progressBarInterface;
-    }
-
-    public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto) {
+    } */
+    /* public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto) {
         this.progressBar = progressBar;
         this.texto = texto;
-    }
+    } */
 
     @Override
     protected void onPreExecute() {
-        progressBar.setProgress(0);
         total = 0;
-        texto.setText("0%");
+        progressBar.get().setProgress(0);
+        progressBar.get().setVisibility(View.VISIBLE);
+        texto.get().setText("0%");
         super.onPreExecute();
     }
 
@@ -44,7 +48,9 @@ public class MinhaProgressBar extends AsyncTask<Object, Object, String> {
     protected String doInBackground(Object... params) {
         try {
             Thread.sleep(1000);
-            for (int i = 0; i < 5; i++) {
+
+            int qtCiclos = 100 / PROGRESSO;
+            for (int i = 0; i < qtCiclos; i++) {
                 publishProgress();
                 Thread.sleep(1000);
             }
@@ -57,18 +63,18 @@ public class MinhaProgressBar extends AsyncTask<Object, Object, String> {
     @Override
     protected void onProgressUpdate(Object... values) {
         total += PROGRESSO;
-        progressBar.incrementProgressBy(PROGRESSO);
+        progressBar.get().incrementProgressBy(PROGRESSO);
         String gdaText = "Carregando informações [" + total + "%" + "]";
-        texto.setText(gdaText);
+        texto.get().setText(gdaText);
         super.onProgressUpdate(values);
     }
 
     @Override
     protected void onPostExecute(String result) {
 
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
-        texto.setText(R.string.pronto);
-        texto.setGravity(Gravity.CENTER_HORIZONTAL);
+        progressBar.get().setVisibility(ProgressBar.INVISIBLE);
+        texto.get().setText(R.string.pronto);
+        texto.get().setGravity(Gravity.CENTER_HORIZONTAL);
 
         if (progressBarInterface != null) {
             progressBarInterface.retornoProgressBar(true, "FIM Progress");

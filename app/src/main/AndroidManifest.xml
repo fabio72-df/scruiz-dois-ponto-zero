@@ -4,15 +4,17 @@
     package="com.fabiocarvalho.scruiz">
 
     <application
-        android:appComponentFactory="whateverString"
         android:allowBackup="true"
+        android:appComponentFactory="whateverString"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:appComponentFactory">
-    <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
+
+        <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
+
 
         <!-- PRINCIPAL -->
         <activity
@@ -20,25 +22,28 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".quiz.InicialTesteActivity"/>
+
         <!-- CHOOSER - ROTEADOR PARA LOGIN Google / E-mail / Anonimo -->
-        <activity android:name=".authenticator.ChooserActivity">
+        <activity
+            android:name=".authenticator.ChooserActivity"
+            android:parentActivityName=".quiz.InicialTesteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ScruizActivity" />
+                android:value=".quiz.InicialTesteActivity" />
         </activity>
         <!-- GOOGLE -->
         <activity
             android:name=".authenticator.GoogleActivity"
-            android:parentActivityName=".ScruizActivity" />
+            android:parentActivityName=".authenticator.ChooserActivity" />
         <!-- E-MAIL -->
         <activity android:name=".authenticator.EmailActivity" />
         <!-- ANONIMO -->
-        <activity android:name=".authenticator.LoginAnonimoActivity"/>
+        <activity android:name=".authenticator.LoginAnonimoActivity" />
 
     </application>
 

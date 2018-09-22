@@ -4,7 +4,6 @@
 
     <item android:title="Login | Logout"
         android:id="@+id/menuPpl_1"/>
-
     <item android:title="Sobre"
         android:id="@+id/menuPpl_2"/>/>
 
