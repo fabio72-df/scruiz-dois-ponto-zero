@@ -1,15 +1,14 @@
 package com.fabiocarvalho.scruiz.authenticator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.fabiocarvalho.scruiz.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class GoogleActivity extends AppCompatActivity implements
+public class GoogleActivity extends ChooserActivity implements
         View.OnClickListener {
 
     private static final String TAG = "GoogleActivity";
@@ -108,9 +107,9 @@ public class GoogleActivity extends AppCompatActivity implements
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
         // showProgressDialog();
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [END_EXCLUDE]
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -122,12 +121,12 @@ public class GoogleActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            // UPDATE APP PREFERENCES
+                            updateAppPreferences(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(GoogleActivity.this, "Autenticação falhou", Toast.LENGTH_SHORT).show();
-                            // TODO ver se retira isso:
-                            //Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                         // [START_EXCLUDE]
@@ -184,7 +183,23 @@ public class GoogleActivity extends AppCompatActivity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
+    private void updateAppPreferences(FirebaseUser user) {
+        if (user != null) {
+            //appPreferences = new AppPreferences(0);
+            SharedPreferences sharedPreferences = getSharedPreferences("Arq_Pref",0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("tipoAutent",0);
+            editor.commit();
+            int tpAutentLido = -1;
+            sharedPreferences = getSharedPreferences("Arq_Pref", 0);
+            if (sharedPreferences.contains("tipoAutent")) {
+                tpAutentLido = sharedPreferences.getInt("tipoAutent", -1);
+            }
+            mStatusTextView.setText(String.valueOf(tpAutentLido));
+            //mStatusTextView.setText(appPreferences.getTxtTipoAutent());
 
+        }
+    }
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -194,7 +209,7 @@ public class GoogleActivity extends AppCompatActivity implements
             signOut();
         } else if (i == R.id.disconnect_button) {
             //revokeAccess();
-            Toast.makeText(GoogleActivity.this,"DISCONNECT",Toast.LENGTH_SHORT).show();
+            Toast.makeText(GoogleActivity.this, "DISCONNECT", Toast.LENGTH_SHORT).show();
         }
     }
 }

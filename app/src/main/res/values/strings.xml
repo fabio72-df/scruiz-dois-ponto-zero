@@ -11,19 +11,27 @@
     <string name="img_configurar_desc">img-configurar</string>
     <string name="img_ranking_desc">img-ranking</string>
 
-    <!-- Firebase-Authentication [QuikStart] -->
+    <!-- Firebase-Authentication [**QuikStart**] -->
     <string name="tela_login_titulo">Login</string>
     <string name="desc_firebase_lockup">Firebase logo and name</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
     <string name="google_title_text">Google Sign In</string>
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_sign_out">Sign out</string>
-    <string name="google_disconnect">DISCONNECT</string>
-    <string name="signed_out">Signed Out</string>
+    <string name="google_status_fmt">Usuário LOGADO: %s</string>
+    <string name="google_sign_out">SAIR</string>
+    <string name="google_disconnect">Cancelar conta</string>
+    <string name="signed_out">--- NÃO logado ---</string>
     <string name="desc_google_sign_in">Faça login com sua conta do Google.</string>
     <string name="desc_email_sign_in">Conecte-se usando seu e-mail.</string>
-    <string name="desc_anonimo_sign_in">[Não participa do Ranking.]</string>
+    <string name="desc_anonimo_sign_in">[Não participa do Ranking]</string>
     <!-- Firebase-Authentication [QuikStart] *** fim ***-->
 
+
+    <!-- TRANSITÓRIOS -->
+    <string name="em_implementacao">::: Em implementação&#8230;:::</string>
+
+    <!-- MENU DE AUTENTICAÇÃO -->
+    <string name="itemMenuAuth">Item do Menu de Autenticação</string>
+    <string name="tituloItemMenuAuth">Titulo Menu Auth</string>
+    <string name="descItemMenuAuth">Descrição Menu Auth</string>
 
 </resources>

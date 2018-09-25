@@ -25,12 +25,13 @@ public class MinhaProgressBar extends AsyncTask<Object, Object, String> {
         this.texto = new WeakReference<>(texto);
         this.progressBarInterface = progressBarInterface;
     }
-    /* public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto, ProgressBarInterface progressBarInterface) {
+    /* OUTROS EXEMPLOS DE ASSINATURA
+    public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto, ProgressBarInterface progressBarInterface) {
         this.progressBar = progressBar;
         this.texto = texto;
         this.progressBarInterface = progressBarInterface;
-    } */
-    /* public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto) {
+    }
+    public MinhaProgressBar(Context context, ProgressBar progressBar, TextView texto) {
         this.progressBar = progressBar;
         this.texto = texto;
     } */

@@ -1,15 +1,20 @@
 package com.fabiocarvalho.scruiz.authenticator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.fabiocarvalho.scruiz.R;
 
-public class LoginAnonimoActivity extends AppCompatActivity {
+public class LoginAnonimoActivity extends ChooserActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_anonimo);
+
+        emImplementacao(getBaseContext());
+
     }
 }

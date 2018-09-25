@@ -15,6 +15,8 @@
 
         <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
 
+        <!-- BASE -->
+        <activity android:name="BaseActivity"/>
 
         <!-- PRINCIPAL -->
         <activity
@@ -28,7 +30,7 @@
 
         <activity android:name=".quiz.InicialTesteActivity"/>
 
-        <!-- CHOOSER - ROTEADOR PARA LOGIN Google / E-mail / Anonimo -->
+        <!-- CHOOSER - ROTEADOR PARA LOGIN: Google / E-mail / Anonimo -->
         <activity
             android:name=".authenticator.ChooserActivity"
             android:parentActivityName=".quiz.InicialTesteActivity">
@@ -44,6 +46,8 @@
         <activity android:name=".authenticator.EmailActivity" />
         <!-- ANONIMO -->
         <activity android:name=".authenticator.LoginAnonimoActivity" />
+
+        <!-- ARQUIVO DE PREFERENCIAS DO APP -->
 
     </application>
 

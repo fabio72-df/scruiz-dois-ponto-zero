@@ -1,51 +1,41 @@
 package com.fabiocarvalho.scruiz;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fabiocarvalho.scruiz.authenticator.ChooserActivity;
 import com.fabiocarvalho.scruiz.quiz.InicialTesteActivity;
 import com.fabiocarvalho.scruiz.utils.MinhaProgressBar;
-import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import com.fabiocarvalho.scruiz.interfaces.*;
 
-public class ScruizActivity extends AppCompatActivity {
+public class ScruizActivity
+        extends BaseActivity {
 
     // Constantes
     private final String TAG_USUARIO = "#usuario";
-    private final Class ESCOLHER_LOGIN = ChooserActivity.class;
 
-    // TODO
-    //Task [provisório]
+    // TODO: Enquanto mostra ProgressBar, atualizar QUESTÕES
+    // Task [???provisório???]
     public MinhaProgressBar mpb;
 
     // ProgressBar
     protected ProgressBar mProgressBar;
     protected TextView textViewPB;
+    // --- fim -- ProgressBar
 
-    // FireBase
+    // FireBase [autenticação]
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-    // Working
-    int cntGeral;
 
     /*
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,18 +55,20 @@ public class ScruizActivity extends AppCompatActivity {
                 mUser = mAuth.getCurrentUser();
                 if (mUser != null) {
                     // User is signed in
-                    Log.d(TAG_USUARIO, "onAuthStateChanged:SIGNED-IN:" + mUser.getDisplayName());
+                    Log.d(TAG_USUARIO,
+                            "onAuthStateChanged:SIGNED-IN:" + mUser.getDisplayName());
                 } else {
                     // User is signed out
-                    Log.d(TAG_USUARIO, "onAuthStateChanged:SIGNED-OUT");
+                    Log.d(TAG_USUARIO,
+                            "onAuthStateChanged:SIGNED-OUT");
                 }
             }
         };
-        // *** fim *** Usuário [logado/offline]
+        // Usuário [logado/offline] *** fim ***
 
-        // ProgressBar
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        textViewPB = (TextView) findViewById(R.id.textView_Carregando);
+        // ProgressBar (associa(bind) para objetos da view)
+        mProgressBar = findViewById(R.id.progressBar);
+        textViewPB = findViewById(R.id.textView_Carregando);
         // ProgressBar *** fim ***
 
     }
@@ -89,42 +81,46 @@ public class ScruizActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Rastrear sempre que o usuário fizer login ou logout:
+        // RASTREAR USUÁRIO LOGADO (sempre que o usuário fizer login ou logout)
         mAuth.addAuthStateListener(mAuthListener);
         if (mAuth != null) {
             mUser = mAuth.getCurrentUser();
         }
+        // RASTREAR USUÁRIO LOGADO *** fim ***
 
         telaCheia(true);
 
-        // Animation
+        // Animation (Logotipo)
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_top_to_center);
         ImageView mLogo = findViewById(R.id.img_LogoSplash);
         mLogo.setImageResource(R.drawable.te_transp_amarelo);
         mLogo.setAlpha(1.0F);
         mLogo.startAnimation(animation);
-        // *** fim *** Animation
+        // Animation *** fim ***
 
         // ProgressBar
-        // (::para receber retorno enviar Interface (ProgressBarInterface)
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        textViewPB = (TextView) findViewById(R.id.textView_Carregando);
+        /*
+           Aqui está sendo utilizada uma interface (ProgressBarInterface) para que possa ser
+            tratado o retorno  (quando acaba)
+         */
+        mProgressBar = findViewById(R.id.progressBar);
+        textViewPB = findViewById(R.id.textView_Carregando);
         ProgressBarInterface pbi = new ProgressBarInterface() {
             @Override
+            // Implementa ação para retorno da ProgressBar
             public void retornoProgressBar(boolean isSucesso, String msg) {
                 boolean logado = false;
                 String userName = "";
                 Intent intent;
-                if (mUser != null){
-                // USUÁRIO LOGADO
+                // USUÁRIO LOGADO -->> DIRECIONA PARA: intent = InicialTeste
+                if (mUser != null) {
                     logado = true;
                     userName = mUser.getDisplayName();
                     intent = new Intent(ScruizActivity.this, InicialTesteActivity.class);
-
-                }else{
-                // USUÁRIO NÃO LOGADO
+                // USUÁRIO NÃO LOGADO -->> DIRECIONA PARA: intent = Chooser
+                } else {
                     userName = "[off-line]";
-                    intent = new Intent(ScruizActivity.this,ChooserActivity.class);
+                    intent = new Intent(ScruizActivity.this, ChooserActivity.class);
                 }
                 textViewPB.setText(userName);
                 telaCheia(false);
@@ -135,7 +131,7 @@ public class ScruizActivity extends AppCompatActivity {
         };
         mpb = new MinhaProgressBar(this, mProgressBar, textViewPB, pbi);
         mpb.execute();
-        // ---[fim}--- progressBar();
+        // ProgressBar *** fim ***
 
     }
 
@@ -155,34 +151,6 @@ public class ScruizActivity extends AppCompatActivity {
         // Parar de rastrear log do usuário
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-
-    /*
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    >> DIVERSOS
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    */
-    // ---------------------------------------------------------------------------------------------
-    // Tela Cheia
-    // ---------------------------------------------------------------------------------------------
-    private void telaCheia(boolean liga) {
-        // --- TELA CHEIA --- (esconde Barra Superior)
-        // Hide the status bar.
-        View decorView = getWindow().getDecorView();
-        int uiOptions;
-        if (liga) {
-            uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        } else {
-            uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
-        }
-        decorView.setSystemUiVisibility(uiOptions);
-        if (getSupportActionBar() != null) {
-            if (liga) {
-                getSupportActionBar().show();
-            } else {
-                getSupportActionBar().hide();
-            }
         }
     }
 
