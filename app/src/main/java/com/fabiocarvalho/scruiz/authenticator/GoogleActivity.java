@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.fabiocarvalho.scruiz.R;
+import com.fabiocarvalho.scruiz.quiz.InicialTesteActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -123,6 +124,9 @@ public class GoogleActivity extends ChooserActivity implements
                             updateUI(user);
                             // UPDATE APP PREFERENCES
                             updateAppPreferences(user);
+                            // Iniciar QUIZ
+                            startActivity(new Intent(GoogleActivity.this,
+                                    InicialTesteActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -147,15 +151,16 @@ public class GoogleActivity extends ChooserActivity implements
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
-
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
+                        startActivity(new Intent(GoogleActivity.this,
+                                ChooserActivity.class));
                     }
                 });
+
     }
 
     private void revokeAccess() {
@@ -185,7 +190,6 @@ public class GoogleActivity extends ChooserActivity implements
     }
     private void updateAppPreferences(FirebaseUser user) {
         if (user != null) {
-            //appPreferences = new AppPreferences(0);
             SharedPreferences sharedPreferences = getSharedPreferences("Arq_Pref",0);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("tipoAutent",0);
@@ -195,9 +199,6 @@ public class GoogleActivity extends ChooserActivity implements
             if (sharedPreferences.contains("tipoAutent")) {
                 tpAutentLido = sharedPreferences.getInt("tipoAutent", -1);
             }
-            mStatusTextView.setText(String.valueOf(tpAutentLido));
-            //mStatusTextView.setText(appPreferences.getTxtTipoAutent());
-
         }
     }
     @Override

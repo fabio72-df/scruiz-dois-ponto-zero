@@ -1,6 +1,11 @@
 <resources>
 
+    <!-- GERAL -->
     <string name="app_name">Scruiz</string>
+
+    <!-- ARQUIVO DE PREFERÊNCIAS -->
+    <string name="ARQ_PREF">Arq_Pref</string>
+    <string name="ARQ_PREF_tpAuth">tipoAutent</string>
 
     <!-- SPLASH SCREEN -->
     <string name="carregando">Carregando informações. Aguarde&#8230;</string>
@@ -25,13 +30,24 @@
     <string name="desc_anonimo_sign_in">[Não participa do Ranking]</string>
     <!-- Firebase-Authentication [QuikStart] *** fim ***-->
 
+    <!-- LOGOUT activity -->
+    <string name="tela_logout_titulo">Logout</string>
+    <string name="logout_confirma">Confirma saída?</string>
+    <string name="botao_sim">Sim</string>
+    <string name="botao_nao">Não</string>
+    <string name="logado_com_fmt">Tipo de Login: %s</string>
+    <string name="usuario_fmt">Usuário LOGADO: %s</string>
 
-    <!-- TRANSITÓRIOS -->
-    <string name="em_implementacao">::: Em implementação&#8230;:::</string>
+    <!-- MENU BARRA SUPERIOR -->
+    <string name="login_logout">Login | Logout</string>
+    <string name="sobre">Sobre</string>
 
     <!-- MENU DE AUTENTICAÇÃO -->
     <string name="itemMenuAuth">Item do Menu de Autenticação</string>
     <string name="tituloItemMenuAuth">Titulo Menu Auth</string>
     <string name="descItemMenuAuth">Descrição Menu Auth</string>
+
+    <!-- TRANSITÓRIOS -->
+    <string name="em_implementacao">::: Em implementação&#8230;:::</string>
 
 </resources>

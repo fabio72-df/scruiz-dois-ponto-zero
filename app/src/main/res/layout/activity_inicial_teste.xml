@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".quiz.InicialTesteActivity">
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_Inicial"
         android:elevation="4dp"
@@ -26,7 +25,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:text="Avalie seu conhecimento sobre SCRUM"
-        android:textSize="36sp"
+        android:textSize="34sp"
         android:theme="@style/TituloGeral"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"

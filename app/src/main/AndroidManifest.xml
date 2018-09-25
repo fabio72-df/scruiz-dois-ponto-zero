@@ -13,10 +13,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:appComponentFactory">
 
-        <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
-
         <!-- BASE -->
-        <activity android:name="BaseActivity"/>
+        <activity android:name=".BaseActivity" />
 
         <!-- PRINCIPAL -->
         <activity
@@ -24,11 +22,29 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".quiz.InicialTesteActivity"/>
+        <activity android:name=".quiz.InicialTesteActivity" />
+        <activity android:name=".quiz.QuizActivity">
+            android:parentActivityName=".quiz.InicialTesteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quiz.InicialTesteActivity" />
+        </activity>
+        <activity android:name=".quiz.ConfigurarActivity">
+            android:parentActivityName=".quiz.InicialTesteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quiz.InicialTesteActivity" />
+        </activity>
+        <activity android:name=".quiz.RankingActivity">
+            android:parentActivityName=".quiz.InicialTesteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quiz.InicialTesteActivity" />
+        </activity>
 
         <!-- CHOOSER - ROTEADOR PARA LOGIN: Google / E-mail / Anonimo -->
         <activity
@@ -41,14 +57,18 @@
         <!-- GOOGLE -->
         <activity
             android:name=".authenticator.GoogleActivity"
-            android:parentActivityName=".authenticator.ChooserActivity" />
+            android:parentActivityName=".authenticator.ChooserActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".authenticator.ChooserActivity" />
+        </activity>
         <!-- E-MAIL -->
         <activity android:name=".authenticator.EmailActivity" />
         <!-- ANONIMO -->
         <activity android:name=".authenticator.LoginAnonimoActivity" />
-
-        <!-- ARQUIVO DE PREFERENCIAS DO APP -->
+        <!-- LOGOUT -->
+        <activity android:name=".authenticator.LogoutActivity" />
 
     </application>
 
-</manifest>
+</manifest> <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->

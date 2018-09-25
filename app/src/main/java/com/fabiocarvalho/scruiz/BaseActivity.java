@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.view.SearchEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.fabiocarvalho.scruiz.authenticator.ChooserActivity;
@@ -19,7 +21,6 @@ public class BaseActivity
 
     // FireBase [autenticação]
     private FirebaseAuth mAuth;
-    public String TIPO_AUTENTICACAO;
 
     // ---------------------------------------------------------------------------------------------
     // Tela Cheia
@@ -54,8 +55,10 @@ public class BaseActivity
         startActivity(i);
     }
 
-    // ---------------------------------------------------------------------------------------------
+    /* ---------------------------------------------------------------------------------------------
     // ALERTA LOGOUT
+    // ---------------------------------------------------------------------------------------------
+    // ***********     FORA DE USO   *************************
     // ---------------------------------------------------------------------------------------------
     public void alertaLogout() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -78,6 +81,12 @@ public class BaseActivity
         });
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
+    }    */
 
+
+/*
+====================================================================================================
+>> FIM DA ACTIVITY
+====================================================================================================
+*/
 }

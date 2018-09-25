@@ -8,12 +8,14 @@ package com.fabiocarvalho.scruiz.authenticator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.fabiocarvalho.scruiz.BaseActivity;
@@ -38,6 +40,11 @@ public class ChooserActivity
             R.string.desc_email_sign_in,
             R.string.desc_anonimo_sign_in
     };
+    private static final int[] IMAGENS_MENU = new int[]{
+            R.drawable.google_300x300,
+            R.drawable.img_email,
+            R.drawable.anonimo
+    };
 
     /*
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,10 +68,7 @@ public class ChooserActivity
         // BARRA SUPERIOR *** fim ***
 
         // Set up ListView and Adapter
-        // MyArrayAdapter adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES);
-        // adapter.setDescriptionIds(DESCRIPTION_IDS);
         AdapterAuthenticator adapter = new AdapterAuthenticator(this);
-        //
         ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -78,38 +82,6 @@ public class ChooserActivity
         startActivity(new Intent(this, clicked));
     }
 
-    /*public static class MyArrayAdapter extends ArrayAdapter<Class> {
-        private Context mContext;
-        private Class[] mClasses;
-        private int[] mDescriptionIds;
-
-        private MyArrayAdapter(Context context, int resource, Class[] objects) {
-            super(context, resource, objects);
-            mContext = context;
-            mClasses = objects;
-        }
-
-        @Override
-        @NonNull
-        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-            View view = convertView;
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-                if (inflater != null) {
-                    view = inflater.inflate(android.R.layout.simple_list_item_2, null);
-                }
-            }
-            TextView a = (view.findViewById(android.R.id.text1));
-            a.setText(MENU_TITULOS[position]);
-            ((TextView) view.findViewById(android.R.id.text2)).setText(mDescriptionIds[position]);
-
-            return view;
-        }
-
-        private void setDescriptionIds(int[] descriptionIds) {
-            mDescriptionIds = descriptionIds;
-        }
-    }*/
     public static class AdapterAuthenticator extends BaseAdapter {
 
         //private final Class[] CLASSES;
@@ -132,9 +104,7 @@ public class ChooserActivity
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-
             View view = activity.getLayoutInflater().inflate(R.layout.lista_auth, parent, false);
-
             Class classe = CLASSES[position];
             //
             TextView nome = (TextView)
@@ -144,9 +114,9 @@ public class ChooserActivity
             TextView descricao = (TextView)
                     view.findViewById(R.id.lista_auth_descricao);
             descricao.setText(DESCRIPTION_IDS[position]);
-            //ImageView imagem = (ImageView) view.findViewById(R.id.lista_auth_imagem);
+            ImageView imagem = (ImageView) view.findViewById(R.id.lista_auth_imagem);
+            imagem.setImageResource(IMAGENS_MENU[position]);
             return view;
-
         }
 
         @Override
