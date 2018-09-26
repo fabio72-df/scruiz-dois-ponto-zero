@@ -15,6 +15,7 @@ import com.fabiocarvalho.scruiz.BaseActivity;
 import com.fabiocarvalho.scruiz.R;
 import com.fabiocarvalho.scruiz.authenticator.ChooserActivity;
 import com.fabiocarvalho.scruiz.authenticator.LogoutActivity;
+import com.fabiocarvalho.scruiz.utils.SobreActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -171,8 +172,8 @@ public class InicialTesteActivity
                 }
                 return true;
             case R.id.menuPpl_2:
-                Toast.makeText(InicialTesteActivity.this, "Sobre",
-                        Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(InicialTesteActivity.this,
+                        SobreActivity.class));
                 return true;
             default:
                 Toast.makeText(InicialTesteActivity.this, item.getItemId(),

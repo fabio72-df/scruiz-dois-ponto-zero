@@ -16,6 +16,11 @@
     <string name="img_configurar_desc">img-configurar</string>
     <string name="img_ranking_desc">img-ranking</string>
 
+    <!-- QUIZ -->
+    <string name="ola">Olá %s</string>
+    <string name="questao_nr">Questão nº: %s</string>
+
+
     <!-- Firebase-Authentication [**QuikStart**] -->
     <string name="tela_login_titulo">Login</string>
     <string name="desc_firebase_lockup">Firebase logo and name</string>
@@ -49,5 +54,6 @@
 
     <!-- TRANSITÓRIOS -->
     <string name="em_implementacao">::: Em implementação&#8230;:::</string>
+    <string name="clique_para_exibir_qst">Clique no botão para iniciar questionário!</string>
 
 </resources>

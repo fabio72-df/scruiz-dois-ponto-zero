@@ -1,18 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".quiz.QuizActivity">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".quiz.QuizActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_Quiz"
-        android:elevation="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:theme="@style/ToolBar" />
 
+    <TextView
+        android:id="@+id/textViewPontos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_Quiz" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textViewNrQuestao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:padding="5dp"
+        android:text="@string/questao_nr"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPontos" />
+
+    <TextView
+        android:id="@+id/textViewQuestao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:padding="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNrQuestao" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuestao">
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="auto"
+            android:freezesText="false"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_primary"
+            android:textIsSelectable="false" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:freezesText="false"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_primary"
+            android:textIsSelectable="false" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:freezesText="false"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_primary"
+            android:textIsSelectable="false" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:freezesText="false"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_primary"
+            android:textIsSelectable="false" />
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:freezesText="false"
+            android:padding="5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_primary"
+            android:textIsSelectable="false" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView_CarregandoQst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/carregando"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarQst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ProgressBar
+        android:id="@+id/progressBarQst"
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+        android:layout_width="252dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/respButton"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/red"
+        android:gravity="bottom|center_horizontal"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

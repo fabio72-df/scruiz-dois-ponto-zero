@@ -11,35 +11,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        tools:replace="android:appComponentFactory">
+        tools:replace="android:appComponentFactory"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <!-- BASE -->
         <activity android:name=".BaseActivity" />
-
         <!-- PRINCIPAL -->
         <activity
             android:name=".ScruizActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- SOBRE -->
+        <activity android:name=".utils.SobreActivity"
+            android:parentActivityName=".quiz.InicialTesteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quiz.InicialTesteActivity" />
+        </activity>
+
+        <!-- QUIZ -->
         <activity android:name=".quiz.InicialTesteActivity" />
-        <activity android:name=".quiz.QuizActivity">
+        <activity android:name=".quiz.QuizActivity"
             android:parentActivityName=".quiz.InicialTesteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".quiz.InicialTesteActivity" />
         </activity>
-        <activity android:name=".quiz.ConfigurarActivity">
+        <activity android:name=".quiz.ConfigurarActivity"
             android:parentActivityName=".quiz.InicialTesteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".quiz.InicialTesteActivity" />
         </activity>
-        <activity android:name=".quiz.RankingActivity">
+        <activity android:name=".quiz.RankingActivity"
             android:parentActivityName=".quiz.InicialTesteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -71,4 +80,6 @@
 
     </application>
 
-</manifest> <!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
+</manifest>
+
+<!-- TODO Verficar: RETIRADO:   android:theme="@style/AppTheme" -->
